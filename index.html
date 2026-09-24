@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Regulatory Links</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#14454f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" id="manifest-link">
+<link rel="icon" id="favicon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f6f5;--card:#fff;--ink:#16292d;--mute:#5d6f73;--line:#d5dfdd;--brand:#14454f;--brand-ink:#fff;--accent:#c47f00;--danger:#b3261e;--r:10px;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a1c;--card:#172427;--ink:#e6efee;--mute:#95a8ab;--line:#2a3b3e;--brand:#5fb3c2;--brand-ink:#0b1a1d;--accent:#f0b34a;--danger:#ff8a80}}
+:root[data-theme="dark"]{--bg:#0f1a1c;--card:#172427;--ink:#e6efee;--mute:#95a8ab;--line:#2a3b3e;--brand:#5fb3c2;--brand-ink:#0b1a1d;--accent:#f0b34a;--danger:#ff8a80}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.5 "Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 16px}
+.wrap{max-width:1000px;margin:0 auto}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+h1{font-size:20px;margin:0;font-weight:700;flex:1;min-width:160px}
+h1 small{display:block;font-size:12px;font-weight:400;color:var(--mute)}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:9px 11px;width:100%}
+input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+button{font:inherit;font-weight:600;cursor:pointer;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 12px}
+button.primary{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+button.danger{color:var(--danger)}
+button.icon{padding:6px 9px;font-weight:500}
+.search{flex:1 1 220px}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}
+.chip{white-space:nowrap;border-radius:999px;padding:5px 12px;font-size:13px;font-weight:500}
+.chip[aria-pressed="true"]{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+main{padding:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:6px}
+.card h3{margin:0;font-size:16px;font-weight:600;display:flex;gap:8px;justify-content:space-between;align-items:flex-start}
+.cat{font-size:12px;color:var(--mute)}
+.url{font-size:12.5px;color:var(--mute);word-break:break-all}
+.note{font-size:13px}
+.actions{display:flex;gap:6px;margin-top:auto;padding-top:8px;flex-wrap:wrap}
+.actions .open{flex:1;text-align:center;text-decoration:none;background:var(--brand);color:var(--brand-ink);border-radius:8px;padding:8px 12px;font-weight:600}
+.star{border:0;background:none;font-size:20px;line-height:1;padding:0 2px;color:var(--mute)}
+.star.on{color:var(--accent)}
+.empty{text-align:center;color:var(--mute);padding:48px 16px}
+dialog{border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);width:min(480px,92vw);padding:18px}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+label{display:block;font-size:13px;font-weight:600;margin:10px 0 4px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:8px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:20}
+.toast.show{opacity:1}
+.offline{display:none;background:var(--accent);color:#000;text-align:center;font-size:13px;padding:4px}
+.offline.show{display:block}
+#login{padding:16px}
+#login[hidden]{display:none}
+.locked header,.locked main,.locked #usersView{display:none!important}
+.noadmin .adminonly{display:none!important}
+.noadmin #grid,.noadmin #grid *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body class="locked">
+<div id="login">
+  <form id="loginForm" class="card" style="max-width:380px;margin:12vh auto 0;padding:24px">
+    <h2 style="margin:0;font-size:22px">Regulatory Links</h2>
+    <p class="note" style="color:var(--mute);margin:0 0 6px">Sign in to continue</p>
+    <label for="lUser">User name</label><input id="lUser" autocomplete="username" autocapitalize="off" spellcheck="false" required>
+    <label for="lPass">Password</label><input id="lPass" type="password" autocomplete="current-password" required>
+    <label style="font-weight:400;display:flex;gap:6px;align-items:center"><input type="checkbox" id="lShow" style="width:auto"> Show password</label>
+    <div id="lErr" class="note" style="color:var(--danger);min-height:22px;margin:6px 0" role="alert"></div>
+    <button class="primary" type="submit" style="width:100%;padding:10px">Sign in</button>
+  </form>
+</div>
+<div class="offline" id="offline">You are offline. Saved links still work; opening a website needs internet.</div>
+<header>
+  <div class="wrap">
+    <div class="row">
+      <h1>Regulatory Links <small id="count"></small></h1>
+      <span id="who" class="cat"></span>
+      <button class="primary adminonly" id="addBtn">Add link</button>
+      <button id="installBtn" hidden>Install app</button>
+      <button id="logoutBtn" hidden>Log out</button>
+      <button id="menuBtn" aria-label="More options">More</button>
+    </div>
+    <div class="chips adminonly" id="tabs" style="padding-bottom:0">
+      <button class="chip" id="tabLinks" aria-pressed="true">Links</button>
+      <button class="chip" id="tabUsers" aria-pressed="false">Users (Admin only)</button>
+    </div>
+    <div class="row" id="searchRow" style="margin-top:10px">
+      <input class="search" id="q" type="search" placeholder="Search name, address or note" aria-label="Search links">
+      <select id="sort" aria-label="Sort" style="width:auto">
+        <option value="manual">My order (move links)</option>
+        <option value="fav">Favourites first</option>
+        <option value="az">Name A–Z</option>
+        <option value="new">Recently added</option>
+      </select>
+    </div>
+    <div class="chips" id="chips"></div>
+  </div>
+</header>
+<main class="wrap">
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" hidden>No links match. Clear the search or add a new link.</div>
+</main>
+<section id="usersView" class="wrap" style="display:none;padding:16px">
+  <h2 style="margin:0 0 4px;font-size:18px">Manage users</h2>
+  <p class="note" style="color:var(--mute);margin:0 0 12px">Only Admin can see this tab. Passwords are saved as encrypted hashes: they cannot be viewed, only replaced.</p>
+  <div class="grid" id="uList"></div>
+  <form id="uForm" class="card" style="margin-top:16px;max-width:460px" autocomplete="off">
+    <h3 id="uTitle" style="margin:0">Add user</h3>
+    <label for="uName">User name</label><input id="uName" maxlength="40" autocomplete="off">
+    <label for="uRole">Role</label><select id="uRole"><option value="user">User</option><option value="admin">Admin</option></select>
+    <label for="uPass" id="uPassLbl">Password</label><input id="uPass" type="password" autocomplete="new-password">
+    <label for="uPass2">Confirm password</label><input id="uPass2" type="password" autocomplete="new-password">
+    <div id="uErr" class="note" style="color:var(--danger);min-height:22px" role="alert"></div>
+    <div class="row"><button class="primary" type="submit" id="uSave">Add user</button><button type="button" id="uCancel" style="display:none">Cancel edit</button></div>
+  </form>
+  <div class="row" style="margin-top:16px">
+    <button id="uCopy" type="button">Copy USERS code (for GitHub)</button>
+    <button id="uReset" type="button" class="danger">Reset users to file defaults</button>
+  </div>
+  <p class="note" style="color:var(--mute)">Changes made here are saved in this browser. To apply them on every device, use "Copy USERS code" and paste it over the USERS list in the file on GitHub.</p>
+</section>
+
+<dialog id="editDlg">
+  <form method="dialog" id="editForm">
+    <h2 id="editTitle" style="margin:0 0 4px;font-size:18px">Add link</h2>
+    <label for="fName">Name</label><input id="fName" required maxlength="80">
+    <label for="fUrl">Website address</label><input id="fUrl" required inputmode="url" placeholder="https://example.gov.in">
+    <label for="fCat">Category</label><input id="fCat" list="catList" placeholder="e.g. Drug Pricing"><datalist id="catList"></datalist>
+    <label for="fNote">Note (optional)</label><textarea id="fNote" rows="2" maxlength="300"></textarea>
+    <div class="row" style="margin-top:16px;justify-content:flex-end">
+      <button type="button" id="cancelEdit">Cancel</button>
+      <button class="primary" type="submit">Save link</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="menuDlg">
+  <h2 style="margin:0 0 10px;font-size:18px">Options</h2>
+  <div class="row" style="flex-direction:column;align-items:stretch">
+    <button id="exportBtn" class="adminonly">Export links (JSON file)</button>
+    <button id="importBtn" class="adminonly">Import links (JSON file)</button>
+    <button id="theme">Switch light / dark</button>
+    <button id="swBtn">Download sw.js (for offline use)</button>
+    <button id="resetBtn" class="danger adminonly">Restore original list</button>
+    <button id="closeMenu">Close</button>
+  </div>
+  <input type="file" id="file" accept="application/json,.json" hidden>
+</dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<!-- Service worker source. Kept here so this file is complete; the "Download sw.js" option saves it. -->
+<script type="text/plain" id="sw-src">
+const C='reg-links-v1';
+self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(['./','./index.html'])).catch(()=>{}));self.skipWaiting()});
+self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
+self.addEventListener('fetch',e=>{
+  const r=e.request; if(r.method!=='GET'||new URL(r.url).origin!==location.origin)return;
+  e.respondWith(fetch(r).then(res=>{const cp=res.clone();caches.open(C).then(c=>c.put(r,cp));return res}).catch(()=>caches.match(r).then(m=>m||caches.match('./'))));
+});
+</script>
+
+<script>
+(function(){
+'use strict';
+var KEY='regLinks.v1', THEME='regLinks.theme';
+var $=function(id){return document.getElementById(id)};
+
+/* ---------- Default data (from Official Link.docx) ---------- */
+var DEFAULTS=[
+["NPPA","https://nppa.gov.in/en","Drug Pricing","National Pharmaceutical Pricing Authority"],
+["IPDMS 2.0","https://nppaipdms.gov.in/IMCS/hissso/loginLogin.imcs","Drug Pricing","NPPA pharma data management login"],
+["CDSCO","https://cdsco.gov.in/opencms/opencms/en/Home/","Drugs & Devices","Central Drugs Standard Control Organisation"],
+["SUGAM Portal","https://www.cdscoonline.gov.in/CDSCO/cdscoDrugs","Drugs & Devices","CDSCO online drug applications"],
+["NSQ Alert","https://cdsco.gov.in/opencms/opencms/en/Notifications/nsq-drugs/","Drugs & Devices","Not of standard quality drug alerts"],
+["Online System for Medical Devices","https://cdscomdonline.gov.in/NewMedDev/Homepage","Drugs & Devices","CDSCO medical devices portal"],
+["ONDLS Portal","https://statedrugs.gov.in/SFDA/Homepage","Drugs & Devices","Online National Drugs Licensing System"],
+["FSSAI","https://www.fssai.gov.in/","Food Safety","Food Safety and Standards Authority of India"],
+["FoSCoS – FSSAI License Search","https://foscos.fssai.gov.in/advance-fbo-search","Food Safety","Advanced food business operator search"],
+["E-Gazette","https://egazette.gov.in/","Notifications & Law","Gazette of India notifications"],
+["Department of Consumer Affairs","https://consumeraffairs.gov.in/","Notifications & Law",""],
+["Trade Mark Public Search","https://tmrsearch.ipindia.gov.in/tmrpublicsearch/","Trade Mark / IP",""],
+["IP India (Trade Mark)","https://ipindia.gov.in/","Trade Mark / IP",""],
+["National Single Window System","https://www.nsws.gov.in/","Government Portals",""],
+["Office of Economic Adviser","https://eaindustry.nic.in/","Government Portals","WPI and industry data"],
+["MCD Citizen Portal","https://mcdonline.nic.in/htlmcd/web/citizen/info","Government Portals","Municipal Corporation of Delhi"],
+["Pharmabiz","https://www.pharmabiz.com/","News","Pharma industry news"]
+];
+function seed(){return DEFAULTS.map(function(d,i){return{id:'d'+i,name:d[0],url:d[1],cat:d[2],note:d[3],fav:false,t:i}})}
+
+/* ---------- Storage (guarded) ---------- */
+var links=[], mem=null;
+function load(){
+  try{var r=localStorage.getItem(KEY);if(r){var p=JSON.parse(r);if(Array.isArray(p))return p}}catch(e){}
+  return mem||seed();
+}
+function save(){mem=links;try{localStorage.setItem(KEY,JSON.stringify(links))}catch(e){}}
+links=load();
+
+/* ---------- Helpers ---------- */
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function normUrl(u){
+  u=(u||'').trim(); if(!u)return null;
+  if(!/^[a-z][a-z0-9+.-]*:/i.test(u))u='https://'+u;
+  try{var x=new URL(u);if(x.protocol!=='http:'&&x.protocol!=='https:')return null;return x.href}catch(e){return null}
+}
+function toast(m){var t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast._h);toast._h=setTimeout(function(){t.classList.remove('show')},2200)}
+function host(u){try{return new URL(u).hostname}catch(e){return u}}
+
+/* ---------- Render ---------- */
+var SORTKEY='regLinks.sort';
+var state={q:'',cat:'All',sort:'manual'};
+try{var ss=localStorage.getItem(SORTKEY);if(ss)state.sort=ss}catch(e){}
+var lastView=[];
+$('sort').value=state.sort;
+function cats(){var s={};links.forEach(function(l){if(l.cat)s[l.cat]=1});return Object.keys(s).sort()}
+function renderChips(){
+  var list=['All','Favourites'].concat(cats());
+  $('chips').innerHTML=list.map(function(c){return '<button class="chip" data-c="'+esc(c)+'" aria-pressed="'+(state.cat===c)+'">'+esc(c)+'</button>'}).join('');
+  $('catList').innerHTML=cats().map(function(c){return '<option value="'+esc(c)+'">'}).join('');
+}
+function render(){
+  var q=state.q.toLowerCase();
+  var v=links.filter(function(l){
+    if(state.cat==='Favourites'&&!l.fav)return false;
+    if(state.cat!=='All'&&state.cat!=='Favourites'&&l.cat!==state.cat)return false;
+    return !q||(l.name+' '+l.url+' '+(l.note||'')+' '+(l.cat||'')).toLowerCase().indexOf(q)>-1;
+  });
+  if(state.sort!=='manual')v.sort(function(a,b){
+    if(state.sort==='az')return a.name.localeCompare(b.name);
+    if(state.sort==='new')return (b.t||0)-(a.t||0);
+    return (b.fav-a.fav)||a.name.localeCompare(b.name);
+  });
+  lastView=v;
+  var man=state.sort==='manual'&&isAdmin();
+  $('grid').innerHTML=v.map(function(l){
+    return '<article class="card" data-id="'+esc(l.id)+'"'+(man?' draggable="true" style="cursor:grab"':'')+'>'+
+      '<h3><span>'+esc(l.name)+'</span><button class="star'+(l.fav?' on':'')+'" data-a="fav" aria-label="'+(l.fav?'Remove from favourites':'Add to favourites')+'" aria-pressed="'+!!l.fav+'">'+(l.fav?'★':'☆')+'</button></h3>'+
+      (l.cat?'<div class="cat">'+esc(l.cat)+'</div>':'')+
+      (l.note?'<div class="note">'+esc(l.note)+'</div>':'')+
+      '<div class="url">'+esc(host(l.url))+'</div>'+
+      (man?'<div class="actions" style="padding-top:0"><button class="icon" data-a="top">Move to top</button><button class="icon" data-a="up" aria-label="Move up">↑ Up</button><button class="icon" data-a="down" aria-label="Move down">↓ Down</button></div>':'')+
+      '<div class="actions"><a class="open" href="'+esc(l.url)+'" target="_blank" rel="noopener noreferrer" data-a="open">Open site</a>'+
+      (isAdmin()?'<button class="icon" data-a="copy">Copy</button><button class="icon" data-a="edit">Edit</button><button class="icon danger" data-a="del">Delete</button>':'')+'</div></article>';
+  }).join('');
+  $('empty').hidden=v.length>0;
+  $('count').textContent=links.length+' saved link'+(links.length===1?'':'s')+(v.length!==links.length?' · showing '+v.length:'');
+  renderChips();
+}
+
+/* ---------- Events ---------- */
+$('q').addEventListener('input',function(e){state.q=e.target.value;render()});
+$('sort').addEventListener('change',function(e){state.sort=e.target.value;try{localStorage.setItem(SORTKEY,state.sort)}catch(x){}render()});
+$('chips').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;state.cat=b.dataset.c;render()});
+
+$('grid').addEventListener('contextmenu',function(e){if(!isAdmin())e.preventDefault()});
+$('grid').addEventListener('click',function(e){
+  var el=e.target.closest('[data-a]');if(!el)return;
+  var card=el.closest('.card'),id=card.dataset.id;
+  var l=links.filter(function(x){return x.id===id})[0];if(!l)return;
+  var a=el.dataset.a;
+  if(a==='open')return; // anchor opens in a new tab
+  if(a==='fav'){l.fav=!l.fav;save();render()}
+  else if(a==='top'){requireAuth(function(){links.splice(links.indexOf(l),1);links.unshift(l);save();render();toast('Moved to top')})}
+  else if(a==='up'||a==='down'){
+    requireAuth(function(){var vi=lastView.indexOf(l),t=lastView[a==='up'?vi-1:vi+1];
+    if(t){moveTo(l.id,t.id,a==='down');save();render()}});
+  }
+  else if(a==='edit')requireAuth(function(){openEdit(l)});
+  else if(a==='del'){requireAuth(function(){if(confirm('Delete "'+l.name+'"?')){links=links.filter(function(x){return x.id!==id});save();render();toast('Link deleted')}})}
+  else if(a==='copy'&&isAdmin()){
+    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(l.url).then(function(){toast('Address copied')},function(){prompt('Copy this address:',l.url)});
+    else prompt('Copy this address:',l.url);
+  }
+});
+
+function idx(id){for(var i=0;i<links.length;i++)if(links[i].id===id)return i;return -1}
+function moveTo(id,targetId,after){
+  var it=links.splice(idx(id),1)[0],j=idx(targetId);
+  links.splice(after?j+1:j,0,it);
+}
+var dragId=null;
+$('grid').addEventListener('dragstart',function(e){var c=e.target.closest('.card');if(!c)return;dragId=c.dataset.id;try{e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',dragId)}catch(x){}c.style.opacity='.5'});
+$('grid').addEventListener('dragend',function(e){dragId=null;render()});
+$('grid').addEventListener('dragover',function(e){if(dragId&&e.target.closest('.card'))e.preventDefault()});
+$('grid').addEventListener('drop',function(e){
+  var c=e.target.closest('.card');if(!c||!dragId||c.dataset.id===dragId)return;
+  e.preventDefault();
+  var did=dragId,tid=c.dataset.id;dragId=null;
+  requireAuth(function(){moveTo(did,tid,idx(did)<idx(tid));save();render()});
+});
+var editing=null;
+function openEdit(l){
+  editing=l||null;
+  $('editTitle').textContent=l?'Edit link':'Add link';
+  $('fName').value=l?l.name:'';$('fUrl').value=l?l.url:'';$('fCat').value=l?(l.cat||''):(state.cat!=='All'&&state.cat!=='Favourites'?state.cat:'');$('fNote').value=l?(l.note||''):'';
+  $('editDlg').showModal();$('fName').focus();
+}
+$('addBtn').onclick=function(){requireAuth(function(){openEdit(null)})};
+$('cancelEdit').onclick=function(){$('editDlg').close()};
+$('editForm').addEventListener('submit',function(e){
+  var u=normUrl($('fUrl').value);
+  if(!u){e.preventDefault();toast('Enter a valid website address');return}
+  var d={name:$('fName').value.trim(),url:u,cat:$('fCat').value.trim(),note:$('fNote').value.trim()};
+  if(editing){Object.assign(editing,d);toast('Link updated')}
+  else{links.push(Object.assign({id:'u'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),fav:false,t:Date.now()},d));toast('Link added')}
+  save();render();
+});
+
+/* ---------- Login & roles ----------
+   USERS = default accounts (salted PBKDF2 hashes, no plain passwords).
+   Admin manages accounts from the "Users" tab; those changes are kept in this browser.
+   To make them permanent for everyone, use "Copy USERS code" there and paste it over this list. */
+var USERS=[
+  {u:'User-1',r:'admin',s:'6c7c606856adec967816c981c617afab',h:'a1ca89fa20e51044ede66cadbc3ecc1c462b91468768d6b7592713827fc9874f'},
+  {u:'User-2',r:'user',s:'8f31a00c50a5c1a1011f567fa4cbe391',h:'46add3a56eccdff47c01c0c58f11d3638aaa8b75465921391c4073fab5fe40d8'},
+  {u:'User-3',r:'user',s:'5040c003479d89e2ecb6573f8982f55a',h:'a038a62378ec644dd2de461f1a365ff3107399361fc7963b7e6c6d2874f9b9ec'}
+];
+var USERKEY='regLinks.users', users=loadUsers();
+function loadUsers(){
+  try{var r=JSON.parse(localStorage.getItem(USERKEY)||'null');
+    if(Array.isArray(r)&&r.length&&r.every(function(x){return x&&x.u&&x.r&&x.s&&x.h}))return r}catch(e){}
+  return USERS.slice();
+}
+function saveUsers(){try{localStorage.setItem(USERKEY,JSON.stringify(users))}catch(e){toast('Could not save in this browser')}}
+var SESSKEY='regLinks.session', session=null, fails=0, lockedUntil=0;
+try{var sv=JSON.parse(sessionStorage.getItem(SESSKEY)||'null');if(sv){var f0=users.filter(function(x){return x.u===sv.u})[0];if(f0)session={u:f0.u,r:f0.r}}}catch(e){}
+function isAdmin(){return !!session&&session.r==='admin'}
+function hex(buf){return Array.prototype.map.call(new Uint8Array(buf),function(x){return ('0'+x.toString(16)).slice(-2)}).join('')}
+function pbk(pw,salt){
+  if(!(window.crypto&&crypto.subtle))return Promise.reject(new Error('nocrypto'));
+  var enc=new TextEncoder();
+  return crypto.subtle.importKey('raw',enc.encode(pw),'PBKDF2',false,['deriveBits'])
+    .then(function(k){return crypto.subtle.deriveBits({name:'PBKDF2',salt:enc.encode(salt),iterations:150000,hash:'SHA-256'},k,256)}).then(hex);
+}
+function requireAuth(cb){if(isAdmin())cb();else toast('Only Admin can do this')}
+function applySession(){
+  var on=!!session;
+  $('login').hidden=on;
+  document.body.classList.toggle('locked',!on);
+  document.documentElement.classList.toggle('noadmin',!isAdmin());
+  $('who').textContent=on?session.u+' · '+(session.r==='admin'?'Admin':'User'):'';
+  $('logoutBtn').hidden=!on;
+  if(on){showView('links');render()}else{$('lUser').focus()}
+}
+$('lShow').onchange=function(){$('lPass').type=this.checked?'text':'password'};
+$('loginForm').addEventListener('submit',function(e){
+  e.preventDefault();var err=$('lErr');err.textContent='';
+  if(Date.now()<lockedUntil){err.textContent='Too many wrong attempts. Wait '+Math.ceil((lockedUntil-Date.now())/1000)+' seconds.';return}
+  var name=$('lUser').value.trim().toLowerCase();
+  var u=users.filter(function(x){return x.u.toLowerCase()===name})[0];
+  pbk($('lPass').value,u?u.s:'0000').then(function(h){
+    if(u&&h===u.h){
+      fails=0;session={u:u.u,r:u.r};
+      try{sessionStorage.setItem(SESSKEY,JSON.stringify({u:u.u}))}catch(x){}
+      $('lPass').value='';$('lShow').checked=false;$('lPass').type='password';applySession();
+    }else{
+      fails++;err.textContent='Wrong user name or password.';$('lPass').value='';
+      if(fails>=5){lockedUntil=Date.now()+30000;fails=0}
+    }
+  }).catch(function(){err.textContent='Sign-in needs a secure page. Open the site using https.'});
+});
+$('logoutBtn').onclick=function(){
+  session=null;try{sessionStorage.removeItem(SESSKEY)}catch(e){}
+  ['menuDlg','editDlg'].forEach(function(id){if($(id).open)$(id).close()});
+  $('lUser').value='';applySession();
+};
+/* ---------- Users tab (Admin only) ---------- */
+var editIdx=null;
+function showView(v){
+  var u=(v==='users')&&isAdmin();
+  $('searchRow').style.display=u?'none':'';
+  $('chips').style.display=u?'none':'';
+  document.querySelector('main').style.display=u?'none':'';
+  $('usersView').style.display=u?'block':'none';
+  $('tabLinks').setAttribute('aria-pressed',String(!u));
+  $('tabUsers').setAttribute('aria-pressed',String(u));
+  if(u){resetUserForm();renderUsers()}
+}
+$('tabLinks').onclick=function(){showView('links')};
+$('tabUsers').onclick=function(){showView('users')};
+function renderUsers(){
+  $('uList').innerHTML=users.map(function(x,i){
+    var me=session&&x.u===session.u;
+    return '<div class="card"><div class="row" style="justify-content:space-between"><b>'+esc(x.u)+(me?' <span class="cat">(you)</span>':'')+'</b><span class="cat">'+(x.r==='admin'?'Admin':'User')+'</span></div>'+
+      '<div class="actions"><button class="icon" data-i="'+i+'" data-u="edit">Edit</button>'+(me?'':'<button class="icon danger" data-i="'+i+'" data-u="del">Delete</button>')+'</div></div>';
+  }).join('');
+}
+function resetUserForm(){
+  editIdx=null;
+  $('uForm').reset();$('uErr').textContent='';
+  $('uTitle').textContent='Add user';$('uSave').textContent='Add user';
+  $('uPassLbl').textContent='Password';$('uRole').disabled=false;$('uCancel').style.display='none';
+}
+$('uCancel').onclick=resetUserForm;
+$('uList').addEventListener('click',function(e){
+  if(!isAdmin())return;
+  var b=e.target.closest('[data-u]');if(!b)return;
+  var i=+b.dataset.i,x=users[i];if(!x)return;
+  if(b.dataset.u==='edit'){
+    editIdx=i;$('uForm').reset();$('uErr').textContent='';
+    $('uName').value=x.u;$('uRole').value=x.r;
+    var me=session&&x.u===session.u;$('uRole').disabled=!!me;
+    $('uTitle').textContent='Edit user';$('uSave').textContent='Save changes';
+    $('uPassLbl').textContent='New password (leave blank to keep the current one)';
+    $('uCancel').style.display='';$('uName').focus();$('uForm').scrollIntoView({behavior:'smooth',block:'center'});
+  }else if(b.dataset.u==='del'){
+    if(session&&x.u===session.u)return;
+    if(confirm('Delete user "'+x.u+'"?')){users.splice(i,1);saveUsers();resetUserForm();renderUsers();toast('User deleted')}
+  }
+});
+$('uForm').addEventListener('submit',function(e){
+  e.preventDefault();if(!isAdmin())return;
+  var err=$('uErr');err.textContent='';
+  var name=$('uName').value.trim(),role=$('uRole').value,p=$('uPass').value,p2=$('uPass2').value;
+  var cur=editIdx===null?null:users[editIdx];
+  if(!name){err.textContent='Enter a user name.';return}
+  if(users.some(function(x,i){return i!==editIdx&&x.u.toLowerCase()===name.toLowerCase()})){err.textContent='This user name already exists.';return}
+  if((!cur||p)&&p.length<6){err.textContent='Password must be at least 6 characters.';return}
+  if(p!==p2){err.textContent='The two passwords do not match.';return}
+  var self=!!(cur&&session&&cur.u===session.u);
+  if(self)role=cur.r;
+  function finish(rec){
+    if(cur){users[editIdx]=rec;if(self){session.u=rec.u;try{sessionStorage.setItem(SESSKEY,JSON.stringify({u:rec.u}))}catch(x){}$('who').textContent=rec.u+' · Admin'}}
+    else users.push(rec);
+    saveUsers();resetUserForm();renderUsers();toast(cur?'User updated':'User added');
+  }
+  if(p){
+    var a=new Uint8Array(16);crypto.getRandomValues(a);var salt=hex(a);
+    pbk(p,salt).then(function(h){finish({u:name,r:role,s:salt,h:h})}).catch(function(){err.textContent='This needs a secure page. Open the site using https.'});
+  }else finish({u:name,r:role,s:cur.s,h:cur.h});
+});
+$('uCopy').onclick=function(){
+  if(!isAdmin())return;
+  var t='var USERS=[\n'+users.map(function(x){return '  {u:'+JSON.stringify(x.u)+',r:'+JSON.stringify(x.r)+',s:'+JSON.stringify(x.s)+',h:'+JSON.stringify(x.h)+'}'}).join(',\n')+'\n];';
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(function(){toast('USERS code copied')},function(){prompt('Copy this code:',t)});
+  else prompt('Copy this code:',t);
+};
+$('uReset').onclick=function(){
+  if(!isAdmin())return;
+  if(!confirm('Discard users changed in this browser and go back to the users in the file?'))return;
+  try{localStorage.removeItem(USERKEY)}catch(e){}
+  users=USERS.slice();
+  var ok=users.some(function(x){return x.u===session.u&&x.r==='admin'});
+  if(!ok){toast('Your account is not in the file list. Logging out.');$('logoutBtn').onclick();return}
+  resetUserForm();renderUsers();toast('Users reset to file defaults');
+};
+
+/* Menu */
+$('menuBtn').onclick=function(){$('menuDlg').showModal()};
+$('closeMenu').onclick=function(){$('menuDlg').close()};
+function download(name,text,type){var b=new Blob([text],{type:type}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},1000)}
+$('exportBtn').onclick=function(){download('regulatory-links-'+new Date().toISOString().slice(0,10)+'.json',JSON.stringify(links,null,2),'application/json');toast('Exported')};
+$('importBtn').onclick=function(){requireAuth(function(){$('file').click()})};
+$('file').onchange=function(e){
+  var f=e.target.files[0];if(!f)return;
+  var r=new FileReader();
+  r.onload=function(){
+    try{
+      var arr=JSON.parse(r.result);if(!Array.isArray(arr))throw 0;
+      var known={};links.forEach(function(l){known[l.url]=1});var n=0;
+      arr.forEach(function(x){var u=normUrl(x&&x.url);if(!u||!x.name||known[u])return;known[u]=1;n++;
+        links.push({id:'i'+Date.now().toString(36)+n,name:String(x.name).slice(0,80),url:u,cat:String(x.cat||''),note:String(x.note||''),fav:!!x.fav,t:Date.now()+n})});
+      save();render();$('menuDlg').close();toast(n+' link'+(n===1?'':'s')+' imported');
+    }catch(err){toast('Import failed: not a valid links file')}
+    $('file').value='';
+  };
+  r.readAsText(f);
+};
+$('resetBtn').onclick=function(){requireAuth(function(){if(confirm('Replace all links with the original list? Your added links will be removed.')){links=seed();save();render();$('menuDlg').close();toast('Original list restored')}})};
+$('swBtn').onclick=function(){download('sw.js',$('sw-src').textContent.trim(),'text/javascript');toast('Save sw.js next to this file (as index.html)')};
+
+/* Theme */
+function applyTheme(t){if(t)document.documentElement.setAttribute('data-theme',t)}
+try{applyTheme(localStorage.getItem(THEME))}catch(e){}
+$('theme').onclick=function(){
+  var cur=document.documentElement.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  var n=cur==='dark'?'light':'dark';applyTheme(n);try{localStorage.setItem(THEME,n)}catch(e){}
+};
+
+/* ---------- PWA: manifest, icon, service worker, install ---------- */
+var svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="96" fill="#14454f"/><path d="M212 300l-40 40a44 44 0 0 1-62-62l60-60a44 44 0 0 1 62 0" fill="none" stroke="#fff" stroke-width="30" stroke-linecap="round"/><path d="M300 212l40-40a44 44 0 0 1 62 62l-60 60a44 44 0 0 1-62 0" fill="none" stroke="#f0b34a" stroke-width="30" stroke-linecap="round"/></svg>';
+var iconUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+$('favicon').href=iconUrl;
+try{
+  var man={name:'Regulatory Links',short_name:'Reg Links',description:'Maintain and open official regulatory website links',
+    start_url:location.href.split('#')[0],scope:location.href.split('#')[0].replace(/[^\/]*$/,''),display:'standalone',background_color:'#f3f6f5',theme_color:'#14454f',
+    icons:[{src:iconUrl,sizes:'any',type:'image/svg+xml',purpose:'any'},{src:iconUrl,sizes:'512x512',type:'image/svg+xml',purpose:'maskable'}]};
+  $('manifest-link').href=URL.createObjectURL(new Blob([JSON.stringify(man)],{type:'application/manifest+json'}));
+}catch(e){}
+if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){
+  navigator.serviceWorker.register('sw.js').catch(function(){/* sw.js not present yet: app still works online */});
+}
+var deferred=null;
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferred=e;$('installBtn').hidden=false});
+$('installBtn').onclick=function(){if(!deferred)return;deferred.prompt();deferred.userChoice.finally(function(){deferred=null;$('installBtn').hidden=true})};
+window.addEventListener('appinstalled',function(){$('installBtn').hidden=true;toast('App installed')});
+function net(){$('offline').classList.toggle('show',!navigator.onLine)}
+addEventListener('online',net);addEventListener('offline',net);net();
+
+applySession();
+})();
+</script>
+</body>
+</html>
